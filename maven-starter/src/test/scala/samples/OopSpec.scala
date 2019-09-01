@@ -5,7 +5,6 @@ import org.scalatest.{FunSuite, Matchers}
 class OopSpec extends FunSuite with Matchers {
 
 
-
   test("oop") {
     abstract class Reducer(init: Int) {
       def combine(x: Int, y: Int): Int
@@ -28,7 +27,7 @@ class OopSpec extends FunSuite with Matchers {
     val nums = List(1, 2, 3, 4)
 
     Product.reduce(nums) shouldBe 24
-      Sum.reduce(nums) shouldBe 10
+    Sum.reduce(nums) shouldBe 10
   }
 
 }
