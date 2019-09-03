@@ -44,14 +44,14 @@ class PostController @Autowired()(val posts: PostRepository) {
   def all() = ok(posts.findAll())
 
   @PostMapping
-  def save(@RequestBody @Valid() form: PostForm, errors: BindingResult) = errors.hasErrors match {
+  def save(@RequestBody @Valid form: PostForm, errors: BindingResult) = errors.hasErrors match {
     case true => {
       badRequest().build()
     }
     case _ => {
       val data = Post(title = form.title, content = form.content)
       val saved = posts.save(data)
-      created(ServletUriComponentsBuilder.fromCurrentContextPath().path("/{id}").build(saved.id)).build()
+      created(ServletUriComponentsBuilder.fromCurrentContextPath().path("/{id}").buildAndExpand(saved.id).toUri).build()
     }
   }
 
@@ -60,7 +60,15 @@ class PostController @Autowired()(val posts: PostRepository) {
 }
 
 //case class
-case class PostForm(@NotNull @NotEmpty @BeanProperty title: String, @BeanProperty content: String)
+//case class PostForm(@NotNull @NotEmpty @BeanProperty title: String, @BeanProperty content: String)
+
+class PostForm {
+
+  @NotNull
+  @NotEmpty
+  @BeanProperty var title: String = _
+  @BeanProperty var content: String = _
+}
 
 trait PostRepository extends JpaRepository[Post, Long]
 
