@@ -11,7 +11,6 @@ import org.springframework.boot.{ApplicationArguments, ApplicationRunner, Spring
 import org.springframework.context.annotation.Bean
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.http.ResponseEntity._
-import org.springframework.stereotype.Component
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation._
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
@@ -34,6 +33,7 @@ class BootConfig() {
     )
     //1. use for to save one by one.
     //_data.foreach(d => posts.save(d))
+    //posts.findAll().toArray.foreach(d => println(s"post: $d"))
 
     //2. convert to java.util.List
     import scala.jdk.CollectionConverters._
@@ -41,7 +41,6 @@ class BootConfig() {
 
     //convert to scala List
     posts.findAll().asScala.toList.foreach(d => println(s"post: $d"))
-    //posts.findAll().toArray.foreach(d => println(s"post: $d"))
   }
 
 }
@@ -84,7 +83,20 @@ class PostController @Autowired()(val posts: PostRepository) {
   }
 
   @GetMapping(value = Array("/{id}"))
-  def get(@PathVariable id: Long) = ok(posts.findById(id))
+  def get(@PathVariable id: Long) = {
+    val opt = posts.findById(id)
+    //convert java Optional to scala Option
+    // 1. manually convert it
+    //val scalaOpt: Option[Post] = if (opt.isPresent) Some(opt.get()) else None
+
+    // 2. use scala OptionConverters to convert it
+    import scala.jdk.OptionConverters._
+    val scalaOpt = opt.toScala
+    scalaOpt match {
+      case Some(post: Post) => ok(post)
+      case _ => notFound().build()
+    }
+  }
 }
 
 // see https://github.com/bijukunjummen/spring-boot-scala-web

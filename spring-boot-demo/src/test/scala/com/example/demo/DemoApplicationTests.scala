@@ -20,13 +20,13 @@ class DemoApplicationTests @Autowired()(val testRestTemplate: TestRestTemplate) 
     assertEquals(2, res.getBody().length)
   }
 
-  @DisplayName(value = "Save post when tile is not filled should return bad request")
+  @DisplayName(value = "Save post when tile is not filled should return 400(bad request)")
   @Test def saveInvalidPost() = {
     val res = testRestTemplate.postForEntity(s"http://localhost:$port", PostForm(null, null), null)
     assertEquals(400, res.getStatusCodeValue())
   }
 
-  @DisplayName(value = "Save valid post should return 201")
+  @DisplayName(value = "Save valid post should return 201(created)")
   @Test def saveValidPost() = {
     val res = testRestTemplate.postForEntity(s"http://localhost:$port", PostForm("test title", null), null)
     assertEquals(201, res.getStatusCodeValue())
