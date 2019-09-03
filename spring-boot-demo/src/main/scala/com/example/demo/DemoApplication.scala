@@ -8,6 +8,7 @@ import javax.validation.constraints.{NotEmpty, NotNull}
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.{ApplicationArguments, ApplicationRunner, SpringApplication}
+import org.springframework.context.annotation.Bean
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.http.ResponseEntity._
 import org.springframework.stereotype.Component
@@ -23,21 +24,47 @@ object DemoApplication extends App {
 }
 
 @SpringBootApplication
-class BootConfig()
+class BootConfig() {
 
-@Component
-class AppInitializer @Autowired()(val posts: PostRepository) extends ApplicationRunner {
-  override def run(args: ApplicationArguments): Unit = {
-    val _data = List(Post(title = "first post", content = "content of first post"), Post(title = "second post", content = "content of second post"))
+  @Bean
+  def init(posts: PostRepository): ApplicationRunner = (args: ApplicationArguments) => {
+    val _data = List(
+      Post(title = "first post", content = "content of first post"),
+      Post(title = "second post", content = "content of second post")
+    )
     //1. use for to save one by one.
     //_data.foreach(d => posts.save(d))
 
     //2. convert to java.util.List
     import scala.jdk.CollectionConverters._
     posts.saveAll(_data.asJava)
-    posts.findAll().toArray.foreach(d => println(s"post: $d"))
+
+    //convert to scala List
+    posts.findAll().asScala.toList.foreach(d => println(s"post: $d"))
+    //posts.findAll().toArray.foreach(d => println(s"post: $d"))
   }
+
 }
+
+//@Component
+//class AppInitializer @Autowired()(val posts: PostRepository) extends ApplicationRunner {
+//  override def run(args: ApplicationArguments): Unit = {
+//    val _data = List(
+//      Post(title = "first post", content = "content of first post"),
+//      Post(title = "second post", content = "content of second post")
+//    )
+//    //1. use for to save one by one.
+//    //_data.foreach(d => posts.save(d))
+//
+//    //2. convert to java.util.List
+//    import scala.jdk.CollectionConverters._
+//    posts.saveAll(_data.asJava)
+//
+//    //convert to scala List
+//    posts.findAll().asScala.toList.foreach(d => println(s"post: $d"))
+//    //posts.findAll().toArray.foreach(d => println(s"post: $d"))
+//  }
+//}
 
 @RestController
 class PostController @Autowired()(val posts: PostRepository) {
