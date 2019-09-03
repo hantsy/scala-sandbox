@@ -9,12 +9,12 @@ import org.springframework.boot.{ApplicationArguments, ApplicationRunner, Spring
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.http.ResponseEntity._
 import org.springframework.stereotype.Component
-import org.springframework.web.bind.annotation.{GetMapping, RestController}
+import org.springframework.web.bind.annotation.{GetMapping, PathVariable, RestController}
 
 import scala.beans.BeanProperty
 
-object DemoApplication {
-  def main(args: Array[String]): Unit = SpringApplication.run(classOf[BootConfig], args: _ *)
+object DemoApplication extends App {
+  SpringApplication.run(classOf[BootConfig])
 }
 
 @SpringBootApplication
@@ -33,6 +33,9 @@ class AppInitializer @Autowired()(val posts: PostRepository) extends Application
 class PostController @Autowired()(val posts: PostRepository) {
   @GetMapping
   def all() = ok(posts.findAll())
+
+  @GetMapping(value = Array("/{id}"))
+  def get(@PathVariable id: Long) = ok(posts.findById(id))
 }
 
 trait PostRepository extends JpaRepository[Post, Long]
