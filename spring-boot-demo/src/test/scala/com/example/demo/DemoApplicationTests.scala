@@ -22,17 +22,13 @@ class DemoApplicationTests @Autowired()(val testRestTemplate: TestRestTemplate) 
 
   @DisplayName(value = "Save post when tile is not filled should return bad request")
   @Test def saveInvalidPost() = {
-    val res = testRestTemplate.postForEntity(s"http://localhost:$port", new PostForm(), null)
+    val res = testRestTemplate.postForEntity(s"http://localhost:$port", PostForm(null, null), null)
     assertEquals(400, res.getStatusCodeValue())
   }
 
   @DisplayName(value = "Save valid post should return 201")
   @Test def saveValidPost() = {
-    val form = new PostForm() {
-      title = "test title"
-    }
-
-    val res = testRestTemplate.postForEntity(s"http://localhost:$port", form, null)
+    val res = testRestTemplate.postForEntity(s"http://localhost:$port", PostForm("test title", null), null)
     assertEquals(201, res.getStatusCodeValue())
     assertNotNull(res.getHeaders.getLocation)
   }

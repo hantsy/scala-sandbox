@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation._
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
+import scala.annotation.meta.field
 import scala.beans.BeanProperty
 
 object DemoApplication extends App {
@@ -27,7 +28,7 @@ class BootConfig()
 @Component
 class AppInitializer @Autowired()(val posts: PostRepository) extends ApplicationRunner {
   override def run(args: ApplicationArguments): Unit = {
-    val _data = List(Post("first post", "content of first post"), Post("second post", "content of second post"))
+    val _data = List(Post(title = "first post", content = "content of first post"), Post(title = "second post", content = "content of second post"))
     //1. use for to save one by one.
     //_data.foreach(d => posts.save(d))
 
@@ -59,32 +60,33 @@ class PostController @Autowired()(val posts: PostRepository) {
   def get(@PathVariable id: Long) = ok(posts.findById(id))
 }
 
+// see https://github.com/bijukunjummen/spring-boot-scala-web
 //case class
-//case class PostForm(@NotNull @NotEmpty @BeanProperty title: String, @BeanProperty content: String)
+case class PostForm(@(NotNull@field) @(NotEmpty@field) @BeanProperty title: String, @BeanProperty content: String)
 
-class PostForm {
-
-  @NotNull
-  @NotEmpty
-  @BeanProperty var title: String = _
-  @BeanProperty var content: String = _
-}
+//class PostForm {
+//
+//  @NotNull
+//  @NotEmpty
+//  @BeanProperty var title: String = _
+//  @BeanProperty var content: String = _
+//}
 
 trait PostRepository extends JpaRepository[Post, Long]
 
 @Entity
-case class Post(@BeanProperty title: String, @BeanProperty content: String) {
+case class Post(
+                 @BeanProperty var title: String,
+                 @BeanProperty var content: String,
+                 @BeanProperty createdOn: LocalDateTime = LocalDateTime.now()
+               ) {
   def this() {
-    this(null, null)
+    this(null, null, null)
   }
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @BeanProperty
-  var id: Long = _
-
-  @BeanProperty
-  val createdOn: LocalDateTime = LocalDateTime.now()
+  @BeanProperty var id: Long = _
 
   override def toString: String = s"Post[id:$id, title:$title, content:$content, createdOn:$createdOn]"
 }
