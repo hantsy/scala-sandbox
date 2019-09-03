@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.{GetMapping, PathVariable, RestController}
 
 import scala.beans.BeanProperty
+import scala.collection.JavaConverters.asScalaBufferConverter
 
 object DemoApplication extends App {
   SpringApplication.run(classOf[BootConfig])
@@ -24,8 +25,13 @@ class BootConfig()
 class AppInitializer @Autowired()(val posts: PostRepository) extends ApplicationRunner {
   override def run(args: ApplicationArguments): Unit = {
     val _data = List(Post("first post", "content of first post"), Post("second post", "content of second post"))
-    _data.foreach(d => posts.save(d))
-    posts.findAll().toArray().foreach(d => println(s"post: $d"))
+    //1. use for to save one by one.
+    //_data.foreach(d => posts.save(d))
+
+    //2. convert to java.util.List
+    import scala.jdk.CollectionConverters._
+    posts.saveAll(_data.asJava)
+    posts.findAll().toArray.foreach(d => println(s"post: $d"))
   }
 }
 
