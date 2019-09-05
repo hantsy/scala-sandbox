@@ -33,9 +33,10 @@ class BootConfig() {
     )
     //1. use for to save one by one.
     //_data.foreach(d => posts.save(d))
+    // convert to array directly.
     //posts.findAll().toArray.foreach(d => println(s"post: $d"))
 
-    //2. convert to java.util.List
+    //2. use scala.jdk.CollectionConverters to convert java collection to  scala, and inverse
     import scala.jdk.CollectionConverters._
     posts.saveAll(_data.asJava)
 
