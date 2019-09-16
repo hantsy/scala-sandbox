@@ -14,7 +14,12 @@ Get more [Getting Started](https://docs.scala-lang.org/getting-started/index.htm
 
 ## Developer's Notes
 * [Setup local development environment](./docs/setup.md)
-* [Scala Basic](./docs/basic.md)
-* [Functions](./docs/fun.md)
+
 * [Build Scala with Sbt](./docs/sbt.md),  and [setup a repository proxy for Sbt](./docs/sbt-proxy.md)
+
+* [Scala Basic](./docs/basic.md)
+
+* [Functions](./docs/fun.md)
+
+  
 
