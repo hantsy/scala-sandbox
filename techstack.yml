@@ -1,0 +1,241 @@
+repo_name: hantsy/scala-sandbox
+report_id: d6e26e6dbe3315b613b1adec7ea49f9d
+version: 0.1
+repo_type: Public
+timestamp: '2024-01-31T08:29:14+00:00'
+requested_by: hantsy
+provider: github
+branch: master
+detected_tools_count: 18
+tools:
+- name: Scala
+  description: A pure-bred object-oriented language that runs on the JVM
+  website_url: http://www.scala-lang.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1012/scala.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox
+  detection_source: Repo Metadata
+- name: Akka
+  description: Build powerful concurrent &amp; distributed applications more easily
+  website_url: http://akka.io/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Concurrency Frameworks
+  image_url: https://img.stackshare.io/service/1773/bxLhidly.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/akka-http-sandbox/src/main/scala/Hello.scala
+  detection_source: akka-http-sandbox/src/main/scala/Hello.scala
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-17 12:16:57.000000000 Z
+- name: Spring Framework
+  description: An application framework and inversion of control container for the
+    Java platform
+  website_url: https://spring.io/projects/spring-framework
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/2006/spring-framework-project-logo.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/spring-boot-demo/pom.xml
+  detection_source: spring-boot-demo/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-03 12:53:17.000000000 Z
+- name: H2 Database
+  description: A relational database management system written in Java
+  website_url: http://www.h2database.com/
+  open_source: false
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/3105/h2-logo_square_400x400.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/spring-boot-demo/pom.xml
+  detection_source: spring-boot-demo/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-03 12:53:17.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox
+  detection_source: Repo Metadata
+- name: Gradle
+  description: A powerful build system for the JVM
+  website_url: https://www.gradle.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Java Build Tools
+  image_url: https://img.stackshare.io/service/975/gradlephant-social-black-bg.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/gradle-starter/build.gradle
+  detection_source: gradle-starter/build.gradle
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-16 05:11:25.000000000 Z
+- name: JUnit
+  description: A programmer-oriented testing framework for Java
+  website_url: http://junit.org/
+  version: '4.12'
+  license: EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Testing Frameworks
+  image_url: https://img.stackshare.io/service/2020/874086.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/gradle-starter/build.gradle
+  detection_source: maven-starter/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2019-08-31 02:19:46.000000000 Z
+- name: ScalaTest
+  description: A testing tool in the Scala ecosystem
+  website_url: http://www.scalatest.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Testing Frameworks
+  image_url: https://img.stackshare.io/service/4371/frame_apngframe0.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/sbt-starter/build.sbt
+  detection_source: sbt-starter/build.sbt
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-03 10:01:55.000000000 Z
+- name: Apache Camel
+  description: A versatile open source integration framework
+  website_url: https://camel.apache.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Application Hosting
+  sub_category: Platform as a Service
+  image_url: https://img.stackshare.io/service/3276/xWt1RFo6_400x400.jpg
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/spring-boot-demo/src/main/resources/application.properties
+  detection_source: spring-boot-demo/src/main/resources/application.properties
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox
+  detection_source: Repo Metadata
+- name: com.h2database:h2
+  description: H2 Database Engine
+  license: MIT-feh
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/spring-boot-demo/pom.xml
+  detection_source: spring-boot-demo/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-03 12:53:17.000000000 Z
+- name: junit:junit
+  description: JUnit is a unit testing framework for Java
+  version: '4.12'
+  license: EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/gradle-starter/build.gradle
+  detection_source: gradle-starter/build.gradle
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-16 05:11:25.000000000 Z
+  vulnerabilities:
+  - name: TemporaryFolder on unix-like systems does not limit access to created files
+    cve_id: CVE-2020-15250
+    cve_url: https://github.com/advisories/GHSA-269g-pwp5-87pp
+    detected_date: Aug 22
+    severity: moderate
+    first_patched: 4.13.1
+- name: org.scala-lang.modules:scala-xml_2.12
+  description: Scala-xml
+  version: 1.2.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/gradle-starter/build.gradle
+  detection_source: gradle-starter/build.gradle
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-16 05:11:25.000000000 Z
+- name: org.scala-lang:scala-library
+  description: Standard library for the Scala Programming Language
+  version: 2.12.9
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/gradle-starter/build.gradle
+  detection_source: gradle-starter/build.gradle
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-16 05:11:25.000000000 Z
+- name: org.scalatest:scalatest_2.12
+  description: Scalatest
+  version: 3.0.8
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/gradle-starter/build.gradle
+  detection_source: gradle-starter/build.gradle
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-16 05:11:25.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-data-jpa
+  description: Starter for using Spring Data JPA with Hibernate
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/spring-boot-demo/pom.xml
+  detection_source: spring-boot-demo/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-03 12:53:17.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-test
+  description: Starter for testing Spring Boot applications with libraries including
+    JUnit
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/spring-boot-demo/pom.xml
+  detection_source: spring-boot-demo/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-03 12:53:17.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-web
+  description: Starter for building web, including RESTful, applications using Spring
+    MVC
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/hantsy/scala-sandbox/blob/master/spring-boot-demo/pom.xml
+  detection_source: spring-boot-demo/pom.xml
+  last_updated_by: hantsy
+  last_updated_on: 2019-09-03 12:53:17.000000000 Z
